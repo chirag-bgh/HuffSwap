@@ -1,5 +1,7 @@
 https://uniswapv3book.com/docs/introduction/dev-environment/
 
+The main reason is that relying only on ERC20 balances would make price manipulations possible: imaging someone sending a big amount of tokens to a pool, makes profitable swaps, and cashes out in the end. To avoid such situations, we need to track pool reserves on our side, and we also need to control when they’re updated.
+
 
 ## Getting Started
 
