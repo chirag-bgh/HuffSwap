@@ -24,6 +24,8 @@
 
 
 /* Functions */
+
+/// @notice constructor
 #define macro CONSTRUCTOR() = takes(0) returns(0) {
     // ERC20("ZuniswapV2 Pair", "ZUNIV2", 18)
     // {
@@ -32,7 +34,19 @@
     // }
 }
 
-#define macro _MINT(address) = takes(1) returns(1) {
+/// @notice Creates 
+#define macro _MINT() = takes(1) returns(1) {
+
+    // input stack:                [to_addr]
+    __FUNC_SIG(_mint)        // [sig, to_addr]
+    0x00 mstore                 // [to_addr]
+
+    // store args in memory
+    // address, uint256
+    dup1 0x20 mstore            // [acct_addr, amount, getter_addr]
+    
+
+    // 
     // (uint112 _reserve0, uint112 _reserve1, ) = getReserves();
     //     uint256 balance0 = IERC20(token0).balanceOf(address(this));
     //     uint256 balance1 = IERC20(token1).balanceOf(address(this));
