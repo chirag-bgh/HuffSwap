@@ -1,0 +1,68 @@
+/// @title HuffswapPair
+/// @author https://github.com/chirag-bgh
+/// @notice Uniswapv2Pair.sol
+
+/* Imports */
+#include "huffmate/math/Math.huff"
+#include "huffmate/tokens/ERC20.huff"
+
+/* Interfaces */
+#define function balanceOf(address) external returns (uint256);
+#define function transfer(address to, uint256 amount) external;
+
+/* Events */
+#define event Burn(address indexed sender, uint256 amount0, uint256 amount1);
+#define event Mint(address indexed sender, uint256 amount0, uint256 amount1);
+#define event Sync(uint256 reserve0, uint256 reserve1);
+
+/* Storage Slots */
+#define constant TOKEN0_SLOT = FREE_STORAGE_POINTER()
+#define constant TOKEN1_SLOT = FREE_STORAGE_POINTER()
+#define constant RESERVE0_SLOT = FREE_STORAGE_POINTER()
+#define constant RESERVE1_SLOT = FREE_STORAGE_POINTER()
+
+
+
+/* Functions */
+#define macro CONSTRUCTOR() = takes(0) returns(0) {
+    // ERC20("ZuniswapV2 Pair", "ZUNIV2", 18)
+    // {
+    //     token0 = token0_;
+    //     token1 = token1_;
+    // }
+}
+
+#define macro _MINT(address) = takes(1) returns(1) {
+    // (uint112 _reserve0, uint112 _reserve1, ) = getReserves();
+    //     uint256 balance0 = IERC20(token0).balanceOf(address(this));
+    //     uint256 balance1 = IERC20(token1).balanceOf(address(this));
+    //     uint256 amount0 = balance0 - _reserve0;
+    //     uint256 amount1 = balance1 - _reserve1;
+
+    //     uint256 liquidity;
+
+    //     if (totalSupply == 0) {
+    //         liquidity = Math.sqrt(amount0 * amount1) - MINIMUM_LIQUIDITY;
+    //         _mint(address(0), MINIMUM_LIQUIDITY);
+    //     } else {
+    //         liquidity = Math.min(
+    //             (amount0 * totalSupply) / _reserve0,
+    //             (amount1 * totalSupply) / _reserve1
+    //         );
+    //     }
+
+    //     if (liquidity <= 0) revert InsufficientLiquidityMinted();
+
+    //     _mint(msg.sender, liquidity);
+
+    //     _update(balance0, balance1);
+
+    //     emit Mint(msg.sender, amount0, amount1);
+
+}
+
+
+
+
+
+
