@@ -12,34 +12,39 @@
 #define function mint(address to) external returns(uint256)
 
 /* Events */
-#define event Burn(address indexed sender, uint256 amount0, uint256 amount1);
-#define event Mint(address indexed sender, uint256 amount0, uint256 amount1);
-#define event Sync(uint256 reserve0, uint256 reserve1);
+#define event Burn(address indexed sender, uint256 amount0, uint256 amount1)
+#define event Mint(address indexed sender, uint256 amount0, uint256 amount1)
+#define event Sync(uint256 reserve0, uint256 reserve1)
+#define event Swap( address indexed sender,uint amount0In,uint amount1In,uint amount0Out,uint amount1Out,address indexed to)
 
 /* Storage Slots */
+#define constant FACTORY = FREE_STORAGE_POINTER()
 #define constant MINIMUM_LIQUIDITY = FREE_STORAGE_POINTER()
 #define constant TOKEN0_SLOT = FREE_STORAGE_POINTER()
 #define constant TOKEN1_SLOT = FREE_STORAGE_POINTER()
 #define constant RESERVE0_SLOT = FREE_STORAGE_POINTER()
 #define constant RESERVE1_SLOT = FREE_STORAGE_POINTER()
+#define constant blockTimestampLast = FREE_STORAGE_POINTER()
 
 
 
 /// @notice constructor
 #define macro CONSTRUCTOR() = takes(2) returns(0) {
-    // ERC20("ZuniswapV2 Pair", "ZUNIV2", 18)
+    // constructor() public { factory = msg.sender; token0 = _token0; token1 = _token1;}
     
-    0x04 
-    calldataload
+    0x00
+    mload
     [TOKEN0_SLOT]
     sstore
 
-    0x24
-    calldataload
+    0x20
+    mload
     [TOKEN1_SLOT]
     sstore
 
-    ERC20()
+    caller
+    [FACTORY]
+    sstore
 }
 
 #define macro set_value() = takes(2)
