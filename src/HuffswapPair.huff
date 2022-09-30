@@ -47,31 +47,24 @@
     sstore
 }
 
-#define macro set_value() = takes(2)
-
 /// @notice Creates 
-#define macro _MINT() = takes(1) returns(1) {
+#define macro _MINT() = takes(0) returns(0) {
     //input stack: [to]
     [RESERVE0_SLOT] sload // [RESERVE0]                 // reading directly from storage
     [RESERVE1_SLOT] sload // [reserve1, reserve0]
+    
+    [TOKEN0_SLOT] sload
+    [TOKEN1_SLOT] sload 
 
+    /* uint balance0 = IERC20(token0).balanceOf(address(this));
+        uint balance1 = IERC20(token1).balanceOf(address(this));
+        uint amount0 = balance0.sub(_reserve0);
+        uint amount1 = balance1.sub(_reserve1);*/
 
 
     
-
-    
-   
-
 }
 
-#define macro get_reserves() = takes(0) returns(3) {
-
-    0x04
-    calldataload
-
-
-
-}
 
 
 
