@@ -26,7 +26,7 @@
 /* Functions */
 
 /// @notice constructor
-#define macro CONSTRUCTOR() = takes(0) returns(0) {
+#define macro CONSTRUCTOR() = takes(2) returns(0) {
     // ERC20("ZuniswapV2 Pair", "ZUNIV2", 18)
     // {
     //     token0 = token0_;
