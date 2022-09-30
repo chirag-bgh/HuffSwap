@@ -1,14 +1,15 @@
 /// @title HuffswapPair
 /// @author https://github.com/chirag-bgh
-/// @notice Uniswapv2Pair.sol
+/// @notice 
 
 /* Imports */
 #include "huffmate/math/Math.huff"
 #include "huffmate/tokens/ERC20.huff"
 
 /* Interfaces */
-#define function balanceOf(address) external returns (uint256);
-#define function transfer(address to, uint256 amount) external;
+#define function balanceOf(address) external returns (uint256)
+#define function transfer(address to, uint256 amount) external
+#define function mint(address to) external returns(uint256)
 
 /* Events */
 #define event Burn(address indexed sender, uint256 amount0, uint256 amount1);
@@ -16,6 +17,7 @@
 #define event Sync(uint256 reserve0, uint256 reserve1);
 
 /* Storage Slots */
+#define constant MINIMUM_LIQUIDITY = FREE_STORAGE_POINTER()
 #define constant TOKEN0_SLOT = FREE_STORAGE_POINTER()
 #define constant TOKEN1_SLOT = FREE_STORAGE_POINTER()
 #define constant RESERVE0_SLOT = FREE_STORAGE_POINTER()
@@ -23,55 +25,46 @@
 
 
 
-/* Functions */
-
 /// @notice constructor
 #define macro CONSTRUCTOR() = takes(2) returns(0) {
     // ERC20("ZuniswapV2 Pair", "ZUNIV2", 18)
-    // {
-    //     token0 = token0_;
-    //     token1 = token1_;
-    // }
+    
+    0x04 
+    calldataload
+    [TOKEN0_SLOT]
+    sstore
+
+    0x24
+    calldataload
+    [TOKEN1_SLOT]
+    sstore
+
+    ERC20()
 }
+
+#define macro set_value() = takes(2)
 
 /// @notice Creates 
 #define macro _MINT() = takes(1) returns(1) {
+    //input stack: [to]
+    [RESERVE0_SLOT] sload // [RESERVE0]                 // reading directly from storage
+    [RESERVE1_SLOT] sload // [reserve1, reserve0]
 
-    // input stack:                [to_addr]
-    __FUNC_SIG(_mint)        // [sig, to_addr]
-    0x00 mstore                 // [to_addr]
 
-    // store args in memory
-    // address, uint256
-    dup1 0x20 mstore            // [acct_addr, amount, getter_addr]
+
     
 
-    // 
-    // (uint112 _reserve0, uint112 _reserve1, ) = getReserves();
-    //     uint256 balance0 = IERC20(token0).balanceOf(address(this));
-    //     uint256 balance1 = IERC20(token1).balanceOf(address(this));
-    //     uint256 amount0 = balance0 - _reserve0;
-    //     uint256 amount1 = balance1 - _reserve1;
+    
+   
 
-    //     uint256 liquidity;
+}
 
-    //     if (totalSupply == 0) {
-    //         liquidity = Math.sqrt(amount0 * amount1) - MINIMUM_LIQUIDITY;
-    //         _mint(address(0), MINIMUM_LIQUIDITY);
-    //     } else {
-    //         liquidity = Math.min(
-    //             (amount0 * totalSupply) / _reserve0,
-    //             (amount1 * totalSupply) / _reserve1
-    //         );
-    //     }
+#define macro get_reserves() = takes(0) returns(3) {
 
-    //     if (liquidity <= 0) revert InsufficientLiquidityMinted();
+    0x04
+    calldataload
 
-    //     _mint(msg.sender, liquidity);
 
-    //     _update(balance0, balance1);
-
-    //     emit Mint(msg.sender, amount0, amount1);
 
 }
 
