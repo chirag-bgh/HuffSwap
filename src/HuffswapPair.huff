@@ -62,7 +62,10 @@
         uint amount1 = balance1.sub(_reserve1);*/
 
 
-    
+    /*
+    address
+    balanceOf
+    */
 }
 
 

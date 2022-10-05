@@ -1,0 +1,25 @@
+/// @title Factory contract
+/// @author github.com/chirag-bgh
+/// @notice 
+
+/* Imports */
+
+#include "./HuffswapPair.huff"
+
+/* Interfaces */
+
+
+/// @notice constructor
+
+/* Storage Slots */
+#define constant FEE_TO = FREE_STORAGE_POINTER()
+#define constant FEE_TO_SETTER = FREE_STORAGE_POINTER()
+#define constant GET_PAIRS_LOCATION = FREE_STORAGE_POINTER()
+#define constant ALL_PAIRS = FREE_STORAGE_POINTER()
+
+
+#define macro constructor() = takes() returns() {
+
+
+
+}
