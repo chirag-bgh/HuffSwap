@@ -56,16 +56,6 @@
     [TOKEN0_SLOT] sload
     [TOKEN1_SLOT] sload 
 
-    /* uint balance0 = IERC20(token0).balanceOf(address(this));
-        uint balance1 = IERC20(token1).balanceOf(address(this));
-        uint amount0 = balance0.sub(_reserve0);
-        uint amount1 = balance1.sub(_reserve1);*/
-
-
-    /*
-    address
-    balanceOf
-    */
 }
 
 

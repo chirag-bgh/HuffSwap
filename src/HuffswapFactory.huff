@@ -20,8 +20,6 @@
 #define event PairCreated(address indexed token0, address indexed token1, address pair, uint)
 
 
-/// @notice constructor
-
 /* Storage Slots */
 #define constant FEE_TO = FREE_STORAGE_POINTER()
 #define constant FEE_TO_SETTER = FREE_STORAGE_POINTER()
@@ -31,6 +29,33 @@
 
 #define macro constructor() = takes() returns() {
 
+    0x00
+    calldataload
+    [FEE_TO_SETTER]
+    sstore
+}
 
+#define macro createPair() = takes(0) returns(0) {
 
 }
+
+#define macro setFeeTo() = takes(0) returns(0) {
+
+    // add require statement : require(msg.sender == feeToSetter, 'UniswapV2: FORBIDDEN');
+    0x04
+    calldataload
+    [FEE_TO]
+    sstore
+
+}
+
+#define macro setFeeToSetter() = takes(0) returns(0) {
+
+    // require(msg.sender == feeToSetter, 'UniswapV2: FORBIDDEN');
+    0x04
+    calldataload
+    [FEE_TO_SETTER]
+    sstore
+
+}
+
